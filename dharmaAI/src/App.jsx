@@ -1,6 +1,4 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 
@@ -18,7 +16,23 @@ function Text() {
   const [loading, setLoading] = useState(false);
   const [messageCount, setMessageCount] = useState(0);
   const [limitReached, setLimitReached] = useState(false);
+  const [chatHistory, setChatHistory] = useState([]);
   const MAX_LIMIT = 5;
+
+
+
+
+  useEffect((() =>{
+    const storedHistory = JSON.parse(localStorage.getItem("dharmachatHistory")) || [];
+    setChatHistory(storedHistory);
+  }), []);
+
+  useEffect(() => {
+    localStorage.setItem("dharmachatHistory", JSON.stringify(chatHistory));
+  }, [chatHistory]);
+  
+
+
 
   async function handleSubmit() {
     if (limitReached) {
@@ -26,7 +40,9 @@ function Text() {
       return;
     } else {
       setLoading(true);
-      await GenerateText(text, setResponse);
+      const answer = await GenerateText(text);
+      setResponse(answer);
+      setChatHistory(prev => [...prev, { question: text, answer }]);
       setText("");
       setMessageCount((prevCount) => {
         const newCount = prevCount + 1;
@@ -51,6 +67,18 @@ function Text() {
       ></textarea>
       <p>{MAX_LIMIT - messageCount} messages remaining</p>
       <button onClick={handleSubmit}>res</button>
+
+    <div>
+      {chatHistory.map((eM, index) => {
+        return (
+          <div key={index}>
+            <p>you: {eM.question}</p>
+            <p>Krishna: {eM.answer}</p>
+          </div>
+        )
+      })}
+      </div>
+
       <div>
         {loading ? <p>🙏 Awaiting Krishna’s wisdom...</p> : <p>{response}</p>}
       </div>
@@ -58,7 +86,7 @@ function Text() {
   );
 }
 
-async function GenerateText(text, setResponse) {
+async function GenerateText(text) {
  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
   const res = await axios({
@@ -79,7 +107,7 @@ async function GenerateText(text, setResponse) {
     },
   });
   // console.log(res['data']['candidates'][0]['content']['parts'][0]['text']);
-  setResponse(res["data"]["candidates"][0]["content"]["parts"][0]["text"]);
+  return (res["data"]["candidates"][0]["content"]["parts"][0]["text"]);
 }
 
 
