@@ -59,10 +59,10 @@ function Text() {
 }
 
 async function GenerateText(text, setResponse) {
-  apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+ const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
   const res = await axios({
-    url: `{apiKey}`,
+    url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${apiKey}`,
     method: "POST",
     data: {
       contents: [
