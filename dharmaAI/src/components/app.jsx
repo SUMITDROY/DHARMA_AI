@@ -1,11 +1,19 @@
 import { Text } from "./Text";
 import "../App.css";
+import { Suspense } from "react";
+import React from "react"; 
+
+function Loading() {
+  return <div>Loading...</div>;
+}
 
 function App() {
   return (
-    <div>
-      <Text />
-    </div>
+    <Suspense fallback={<Loading />}>
+      <div>
+        <Text />
+      </div>
+    </Suspense>
   );
 }
 
