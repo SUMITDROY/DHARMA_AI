@@ -3,6 +3,8 @@ import ShreeKrishna from "../assets/Shree-Krishna.jpg";
 import React from "react";
 import ChatTextarea from "./ChatTextarea";
 import  GlassNavbar  from "./navbar";
+import DynamicText from "./dynamicText";
+import Footer from "./footer";
 
 
 export function Text() {
@@ -39,10 +41,12 @@ export function Text() {
     >
 
       <GlassNavbar />
-      <div className="p-30 text-amber-50 text-5xl" style={{ fontFamily: "Switzer, sans-serif" }}>  
-       welcome to 
-      <span className="text-amber-400"> dharma AI</span>
-      <div className="text-base" >
+      <div className="p-30 text-amber-50 text-3xl" style={{ fontFamily: "Switzer, sans-serif" }}>  
+       welcome to
+      <div className="text-5xl">
+        <DynamicText />
+      </div>
+      <div className="text-base p-5" >
       Get answers to life’s questions through the timeless wisdom of Shree Krishna, the Lord of the Universe. Inspired by the Bhagavad Gita, Dharma AI speaks with the voice of eternal truth.
       </div>
    
@@ -52,13 +56,13 @@ export function Text() {
         <ChatTextarea text={text} setText={setText} handleSubmit={handleSubmit} chatHistory={chatHistory} />
         </div>
 
-      <p>{MAX_LIMIT - messageCount} messages remaining</p>
+      {/* <p>{MAX_LIMIT - messageCount} messages remaining</p> */}
+
+      <div>
+      <Footer/>
+      </div>
 
 
-
-      {/* <div>
-        {loading ? <p>🙏 Awaiting Krishna's wisdom...</p> : <p>{response}</p>}
-      </div> */}
     </div>}
   </div>
   );
