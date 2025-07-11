@@ -4,6 +4,7 @@ import React from "react";
 import ChatTextarea from "./ChatTextarea";
 
 
+
 export function Text() {
   const {
     text,
@@ -18,18 +19,21 @@ export function Text() {
   } = useChat();
 
   return (
+    <div className=" min-h-screen w-full bg-gray-50 p-4">
     <div
-      className=" justify-items-center bg-no-repeat h-screen"
+      className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center min-h-full space-y-4 text-center"
       style={{ backgroundImage: `url()` }}
     >
       <div className="p-4" style={{ fontFamily: "Switzer, sans-serif" }}>
         dharma AI
       </div>
         {/* response box will come here */}
-
-      <div className="px-4">
+        {/* <div className="justify-items-center"> */}
+        
+        <div className="w-full px-4">
         <ChatTextarea text={text} setText={setText} handleSubmit={handleSubmit} />
-      </div>
+        </div>
+
       <p>{MAX_LIMIT - messageCount} messages remaining</p>
 
    {/* for response box */}
@@ -43,11 +47,13 @@ export function Text() {
           );
         })}
       </div>
+{/* 
       {/* for response box */}
 
       <div>
         {loading ? <p>🙏 Awaiting Krishna's wisdom...</p> : <p>{response}</p>}
       </div>
+    </div>
     </div>
   );
 }

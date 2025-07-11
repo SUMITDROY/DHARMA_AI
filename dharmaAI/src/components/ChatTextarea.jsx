@@ -2,7 +2,7 @@ import React from "react";
 
 const ChatTextarea = ({ text, setText, handleSubmit }) => {
   return (
-    <div className="relative">
+    <div className="relative max-w-2xl mx-auto">
       {/* Textarea */}
       <textarea
         value={text}
@@ -113,3 +113,7 @@ const ChatTextarea = ({ text, setText, handleSubmit }) => {
 };
 
 export default ChatTextarea;
+
+
+
+
