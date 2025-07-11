@@ -1,26 +1,4 @@
-import { useChat } from "../hooks/useChat";
-import ShreeKrishna from "../assets/Shree-Krishna.jpg";
-import React from "react";
-import ChatTextarea from "./ChatTextarea";
-// import Background from "./background";
-
-
-
-export function Text() {
-  const {
-    text,
-    setText,
-    response,
-    loading,
-    messageCount,
-    limitReached,
-    chatHistory,
-    handleSubmit,
-    MAX_LIMIT,
-  } = useChat();
-
-  return (
-    <div className="min-h-screen w-full bg-black relative">
+<div className="min-h-screen w-full bg-black relative">
     {/* Midnight Mist */}
     <div
       className="absolute inset-0 z-0"
@@ -32,14 +10,10 @@ export function Text() {
         `,
       }}
     />
-
-
     {<div
       className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center min-h-full space-y-4 text-center"
       style={{ backgroundImage: `url()` }}
     >
-
-      {/* here navpill will come */}
       <div className="p-4 text-amber-50" style={{ fontFamily: "Switzer, sans-serif" }}>
         dharma AI
       </div>
@@ -47,13 +21,13 @@ export function Text() {
 
 
         <div className="w-full px-4">
-        <ChatTextarea text={text} setText={setText} handleSubmit={handleSubmit} chatHistory={chatHistory} />
+        <ChatTextarea text={text} setText={setText} handleSubmit={handleSubmit} />
         </div>
 
       <p>{MAX_LIMIT - messageCount} messages remaining</p>
 
    {/* for response box */}
-      {/* <div>
+      <div>
         {chatHistory.map((eM, index) => {
           return (
             <div key={index}>
@@ -62,7 +36,7 @@ export function Text() {
             </div>
           );
         })}
-      </div> */}
+      </div>
 {/* 
       {/* for response box */}
 
@@ -71,5 +45,3 @@ export function Text() {
       </div>
     </div>}
   </div>
-  );
-}
