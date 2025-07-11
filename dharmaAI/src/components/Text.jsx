@@ -2,8 +2,7 @@ import { useChat } from "../hooks/useChat";
 import ShreeKrishna from "../assets/Shree-Krishna.jpg";
 import React from "react";
 import ChatTextarea from "./ChatTextarea";
-// import Background from "./background";
-
+import  GlassNavbar  from "./navbar";
 
 
 export function Text() {
@@ -39,12 +38,15 @@ export function Text() {
       style={{ backgroundImage: `url()` }}
     >
 
-      {/* here navpill will come */}
-      <div className="p-4 text-amber-50" style={{ fontFamily: "Switzer, sans-serif" }}>
-        dharma AI
+      <GlassNavbar />
+      <div className="p-30 text-amber-50 text-5xl" style={{ fontFamily: "Switzer, sans-serif" }}>  
+       welcome to 
+      <span className="text-amber-400"> dharma AI</span>
+      <div className="text-base" >
+      Get answers to life’s questions through the timeless wisdom of Shree Krishna, the Lord of the Universe. Inspired by the Bhagavad Gita, Dharma AI speaks with the voice of eternal truth.
       </div>
-        {/* response box will come here */}
-
+   
+      </div>
 
         <div className="w-full px-4">
         <ChatTextarea text={text} setText={setText} handleSubmit={handleSubmit} chatHistory={chatHistory} />
@@ -52,23 +54,11 @@ export function Text() {
 
       <p>{MAX_LIMIT - messageCount} messages remaining</p>
 
-   {/* for response box */}
-      {/* <div>
-        {chatHistory.map((eM, index) => {
-          return (
-            <div key={index}>
-              <p>you: {eM.question}</p>
-              <p>Krishna: {eM.answer}</p>
-            </div>
-          );
-        })}
-      </div> */}
-{/* 
-      {/* for response box */}
 
-      <div>
+
+      {/* <div>
         {loading ? <p>🙏 Awaiting Krishna's wisdom...</p> : <p>{response}</p>}
-      </div>
+      </div> */}
     </div>}
   </div>
   );
