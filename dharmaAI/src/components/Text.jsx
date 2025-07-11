@@ -1,11 +1,9 @@
 import { useChat } from "../hooks/useChat";
-import ShreeKrishna from "../assets/Shree-Krishna.jpg";
 import React from "react";
 import ChatTextarea from "./ChatTextarea";
-import  GlassNavbar  from "./navbar";
+import GlassNavbar from "./navbar";
 import DynamicText from "./dynamicText";
 import Footer from "./footer";
-
 
 export function Text() {
   const {
@@ -21,49 +19,65 @@ export function Text() {
   } = useChat();
 
   return (
-    <div className="min-h-screen w-full bg-black relative">
-    {/* Midnight Mist */}
-    <div
-      className="absolute inset-0 z-0"
-      style={{
-        backgroundImage: `
-          radial-gradient(circle at 50% 100%, rgba(70, 85, 110, 0.5) 0%, transparent 60%),
-          radial-gradient(circle at 50% 100%, rgba(99, 102, 241, 0.4) 0%, transparent 70%),
-          radial-gradient(circle at 50% 100%, rgba(181, 184, 208, 0.3) 0%, transparent 80%)
-        `,
-      }}
-    />
+    <>
+      <div className="min-h-screen w-full bg-black relative">
+        <div className="absolute inset-0 z-0 flex justify-center items-center overflow-hidden">
+          <img
+            src="https://i.pinimg.com/736x/ec/44/8b/ec448b5a0f5e42e519e7b7ac9f1d965f.jpg"
+            alt="Background"
+            className="w-[200px] sm:w-[380px] object-contain"
 
-
-    {<div
-      className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center min-h-full space-y-4 text-center"
-      style={{ backgroundImage: `url()` }}
-    >
-
-      <GlassNavbar />
-      <div className="p-30 text-amber-50 text-3xl" style={{ fontFamily: "Switzer, sans-serif" }}>  
-       welcome to
-      <div className="text-5xl">
-        <DynamicText />
-      </div>
-      <div className="text-base p-5" >
-      Get answers to life’s questions through the timeless wisdom of Shree Krishna, the Lord of the Universe. Inspired by the Bhagavad Gita, Dharma AI speaks with the voice of eternal truth.
-      </div>
-   
-      </div>
-
-        <div className="w-full px-4">
-        <ChatTextarea text={text} setText={setText} handleSubmit={handleSubmit} chatHistory={chatHistory} />
+            style={{
+              transform: "rotate(0deg)",
+              objectPosition: "center",
+            }}
+          />
         </div>
 
-      {/* <p>{MAX_LIMIT - messageCount} messages remaining</p> */}
+        <div className="absolute top-4 right-4 z-20">
+          <Footer />
+        </div>
 
-      <div>
-      <Footer/>
+        {
+          <div className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center min-h-full space-y-4 text-center relative z-10">
+            <div
+              className="p-4 sm:p-8 text-amber-50 text-2xl sm:text-3xl"
+              style={{ fontFamily: "Switzer, sans-serif" }}
+            >
+              Welcome to
+              <div className="text-5xl">
+                <DynamicText />
+              </div>
+              <div
+                className="text-base p-5"
+                style={{
+                  fontFamily: '"Ubuntu", sans-serif',
+                  fontWeight: 400,
+                  fontStyle: 'normal'
+                }}
+                
+              >
+                Get answers to life’s questions through the timeless wisdom of{" "}
+                <span className="text-amber-400 font-bold drop-shadow-md">
+                  KRISHNA
+                </span>
+                , the Lord of the Universe. Inspired by the{" "}
+                <span className="text-red-600">Bhagavad Gita</span>, Dharma AI
+                speaks with the voice of eternal truth.
+              </div>
+            </div>
+
+            <div className="w-full px-4 mb-40">
+              <ChatTextarea
+                text={text}
+                setText={setText}
+                handleSubmit={handleSubmit}
+                chatHistory={chatHistory}
+              />
+            </div>
+          </div>
+        }
       </div>
-
-
-    </div>}
-  </div>
+    </>
   );
 }
