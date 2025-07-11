@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-// import { FaFeatherAlt } from "react-icons/fa";
 
 const ChatBox = ({ text, setText, handleSubmit, chatHistory }) => {
   const chatContainerRef = useRef(null);
@@ -75,7 +74,7 @@ const ChatBox = ({ text, setText, handleSubmit, chatHistory }) => {
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Ask to Kr̥ṣṇa..."
+          placeholder="ask your question and take the teachings of Krishna "
           rows="1"
           className="resize-none overflow-hidden w-full p-3 pr-12 rounded-xl bg-white/5 backdrop-blur-md border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
         />
@@ -85,7 +84,7 @@ const ChatBox = ({ text, setText, handleSubmit, chatHistory }) => {
             type="button"
             className="inline-flex items-center justify-center size-8 rounded-md text-white bg-blue-600 hover:bg-blue-500 transition"
           >
-            {/* <FaFeatherAlt className="size-4" /> */}
+  
           </button>
         </div>
       </div>
